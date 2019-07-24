@@ -19,10 +19,12 @@ class player:
             self.box.rect.move.ip(2,0)
         else:
             self.box.rect.move.ip(-2,0)
+
+
 class objective:
     def __init__(self):
         self.box=box()
 
-    def handleColision(self,rect):
+    def handleCollision(self,rect):
         if self.box.rect.colliderect(rect):
             self.box.colorChange
