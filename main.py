@@ -20,11 +20,10 @@ objectives[0].box.rect.center
 
 def update():
     keys=pygame.key.get_pressed()
-    #if keys[k_a]:
-    #    player.move(False)
-    #if keys [h_d]:
-    #    player.move(True)
-
+    if keys[23]:
+        player.move(False)
+    if keys[24]:
+        player.move(True)
     for i in objectives:
         i.handleCollision(player.box.rect)
 
