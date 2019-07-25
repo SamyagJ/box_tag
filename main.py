@@ -1,29 +1,43 @@
 #7/23/2019
-
-from classes import *
+import sys,pygame
+from pygame.locals import *
+from classes import box,objective,player
+from pygame import Color
 
 import pygame
 
-pygame.init()
+import random
 
+pygame.init()
+clock=pygame.time.Clock()
+screen=pygame.display.set_mode((640,480))
 player=player()
+player.box.rect.center=(20,240)
 objectives=[]
 objectives.append(objective())
 objectives.append(objective())
 objectives.append(objective())
-screen=pygame.display.set_mode((1024,720))
-x=5
-y=5
-player.box.rect.center = ((x,y))
 
-objectives[0].box.rect.center
+
+count=0
+for i in objectives:
+    i.box.rect.center=(count +100,240)
+    count += 100\
+
+
+
 
 def update():
-    keys=pygame.key.get_pressed()
-    if keys[23]:
-        player.move(False)
-    if keys[24]:
-        player.move(True)
+    pygame.event.pump()
+    key=pygame.key.get_pressed()
+    if key[pygame.K_LEFT]:
+        player.move(2)
+    if key[pygame.K_RIGHT]:
+        player.move(1)
+    if key[pygame.K_UP]:
+        player.move(3)
+    if key[pygame.K_DOWN]:
+        player.move(4)
     for i in objectives:
         i.handleCollision(player.box.rect)
 
@@ -36,6 +50,7 @@ def render():
 
 def main():
     while True:
+        clock.tick(60)
         update()
         render()
         pygame.display.flip()
